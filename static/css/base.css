@@ -123,6 +123,15 @@ p{
   flex: 2;
 }
 
+.flex-center{
+  justify-content: center;
+  align-items: center;
+}
+
+.h-full{
+  height: 100%;
+}
+
 .nav-pannel a{
   padding: 10px;
   display: inline-block;
@@ -175,8 +184,16 @@ p{
   margin-right: 10px;
 }
 
+.mn-right-20{
+  margin-right: 20px;
+}
+
 .mn-left-20{
   margin-left: 20px;
+}
+
+.mn-left-10{
+  margin-left: 10px;
 }
 
 .h-200{
@@ -255,6 +272,7 @@ p{
 }
 
 .default-btn{
+  display: inline-block;
   border: none;
   border-radius: 15px;
   font-size: 16px;
@@ -358,6 +376,19 @@ p{
   margin: 0 5px 0 0;
 }
 
+.error-board{
+  max-width: 700px;
+}
+
+.error-board h1{
+  color: #903dd0;
+  font-size: 4rem;
+}
+
+.error-board p {
+  color: var(--text-color);
+}
+
 /* Media requests */
 
 @media screen and (max-width: 920px){
@@ -424,8 +455,19 @@ p{
   }
 }
 @media screen and (max-width: 560px){
-  .comment-board .flex-hl-row{
+  .comment-board .flex-hl-row, .error-board.flex-hl-row{
     flex-direction: column;
+  }
+  .error-board .mn-right-20{
+    margin: 0 0 20px 0;
+  }
+  .error-board{
+    padding: 0 25px;
+    max-width: 380px;
+  }
+  .error-board .flex-vl-row{
+    align-items: center;
+    text-align: center;
   }
   .comment-board input,.comment-board input:first-child{
     margin: 10px 0 0 0;

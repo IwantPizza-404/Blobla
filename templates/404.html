@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <div class="main-container h-full flex-hl-row flex-center">
+        <div class="error-board flex-hl-row flex-center flex-cl-1">
+            <div class="flex-cl-1 mn-right-20">
+                <img class="photo-media" src="{% static 'img/monkey-meme.jpg' %}">
+            </div>
+            <div class="flex-cl-1 flex-vl-row h-full">
+                <h1>404</h1>
+                <p class="mn-bottom-10">Ooops! Looks like you found a page that doesn't exist.</p>
+                <div>
+                    <a href="{% url 'home' %}" class="default-btn">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
