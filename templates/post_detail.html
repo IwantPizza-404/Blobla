@@ -1,0 +1,68 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block page_title %}Blobla - {{ post.title | slice:":50" }}{% endblock page_title%}
+
+{% block content %}
+
+    <main class="mn-top-20">
+        <div class="main-container">
+            <div class="flex-hl-row main-row">
+                <div class="flex-vl-row flex-cl-2">
+                    <div href="post.html" class="cboard post pn-25 flex-vl-row mn-bottom-20">
+                        <div class="post-details mn-bottom-10">
+                            <h3>{% block title %} {{ post.title }} {% endblock title %}</h3>
+                            <p>{{ post.created_on }}</p>
+                        </div>
+                        {% if post.image %}
+                        <div class="mn-bottom-10">
+                            <img class="photo-media" src="{{ post.image.url | safe }}">
+                        </div>
+                        {% endif %}
+                        <span class="post-content">{{ post.content | safe }}</span>
+                    </div>
+                    <div class="cboard flex-vl-row pn-25 mn-bottom-20">
+                        {% with comments.count as total_comments %}
+                            <h3 class="mn-bottom-20">{{ total_comments }} Comments</h3>
+                        {% endwith %} 
+                        <div class="flex-vl-row">
+                            {% for comment in comments %}
+                                <div class="comment flex-hl-row mn-bottom-20">
+                                    <div class="comments-avatar mn-right-10">
+                                        <img src="{% static 'img/unknown-user.png' %}">
+                                    </div>
+                                    <div class="comments-details flex-vl-row">
+                                        <h4 class="mn-bottom-5">{{ comment.name }}</h4>
+                                        <span>{{ comment.body | linebreaks }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="comment-board cboard pn-25 mn-bottom-20 flex-vl-row">
+                        {% if new_comment %}
+                            <div class="alert alert-success" role="alert">
+                                Your comment is awaiting moderation
+                            </div>
+                        {% else %}
+                            <form action="." method="post" class="flex-vl-row">
+                                {% csrf_token %}
+                                <h3 class="mn-bottom-20 underline">Add a comment</h3>
+                                <div class="flex-hl-row mn-bottom-10">
+                                    <input type="text" name="name" class="flex-cl-1" id="id_name" required maxlength="18" placeholder="Name" value="{{ comment.name }}">
+                                    <input type="email" name="email" class="flex-cl-1" id="id_email" required maxlength="50" placeholder="Email" value="{{ comment.email }}">
+                                </div>
+                                <textarea name="body" class="mn-bottom-10" id="id_body" cols="30" rows="10" placeholder="Your comment..." value="{{ comment.body }}"></textarea>
+                                <div class="send-btn-wrapp">
+                                    <button class="default-btn" type="submit">Send</button>
+                                </div>
+                            </form>                            
+                        {% endif %}
+                    </div>
+                </div>
+                {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}

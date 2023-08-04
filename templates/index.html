@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block page_title %}Blobla - Home{% endblock page_title %}
+
+{% block content %}
+    <section class="mn-top-20">
+        <div class="main-container">
+            <div class="greeting-label h-200">
+                <h2>Welcome to the "BloBla"!</h2>
+            </div>
+        </div>
+    </section>
+
+    <main class="mn-top-20 mn-bottom-20">
+        <div class="main-container">
+            <div class="flex-hl-row main-row">
+                <div class="flex-vl-row flex-cl-2">
+                    {% if post_list != null %}
+                        {% for post in post_list %}
+                            <a href="{% url 'post_detail' post.slug  %}" class="cboard post pn-25 flex-vl-row mn-bottom-20">
+                                <div class="post-details mn-bottom-10">
+                                    <h3>{{ post.title }}</h3>
+                                    <p>{{ post.created_on}}</p>
+                                </div>
+                                {% if post.image %}
+                                    <div class="mn-bottom-10">
+                                        <img class="photo-media" src="{{ post.image.url | safe }}">
+                                    </div>
+                                {% endif %}
+                                <span class="post-content line-clamp">{{ post.content | safe | slice:":100" }}</span>
+                            </a>
+                        {% endfor %}
+                    {% else %}
+                        <div class="cboard  h-200 pn-25 mn-bottom-20">
+                            <h2>Nothing yet...</h2>
+                        </div>
+                    {% endif %}
+                    {% if is_paginated %}
+                        <nav class="page-navigation pn-10">
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page={{ page_obj.previous_page_number }}" class="cboard">&lt; PREV </a></li>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}" class="cboard"> NEXT &gt;</a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                </div>
+                {% block sidebar %}
+                    {% include 'sidebar.html' %}
+                {% endblock sidebar %}
+            </div>
+        </div>
+    </main>
+{%endblock%}
