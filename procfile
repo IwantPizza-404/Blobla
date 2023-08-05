@@ -1,1 +1,3 @@
-web: gunicorn blobla.wsgi:application --logfile -
+web: gunicorn blobla.wsgi:application --log-file -
+python manage.py collectstatic --noinput
+manage.py migrate
