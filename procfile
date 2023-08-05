@@ -1,1 +1,1 @@
-web: gunicorn blobla.wsgi
+web: gunicorn blobla.wsgi:application --logfile -
