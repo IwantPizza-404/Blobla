@@ -34,19 +34,19 @@ textarea{
 body.dark-theme{
   --bg-color: #18181B;
   --accent-bg-color: #303032;
-  --sub-text-color: #A1A1AA;
+  --sub-text-color: #9696a0;
   --text-color: #ffffff;
   --border-color: rgba(255, 255, 255, 0.1);
-  --shadow-box: rgba(0, 0, 0, 0.2) 0px 0px 8px 0px;
+  --shadow-box: rgba(0, 0, 0, 0.15) 0px 0px 8px 0px;
 }
 
 body.light-theme{
   --bg-color: #ffffff;
-  --accent-bg-color: #E4E4E4;
+  --accent-bg-color: #f4f4f4;
   --sub-text-color: #A1A1AA;
   --text-color: #000000;
   --border-color: rgba(0, 0, 0, 0.1);
-  --shadow-box: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+  --shadow-box: rgba(99, 99, 99, 0.1) 0px 0px 8px 0px;
 }
 
 
@@ -58,6 +58,27 @@ body.light-theme{
 ::placeholder {
     color: var(--sub-text-color);
     opacity: 0.5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 body{
@@ -136,6 +157,12 @@ p{
   padding: 10px;
   display: inline-block;
   font-size: 17px;
+  color: var(--sub-text-color);
+  transition: color .1s ease-out;
+}
+
+.nav-pannel a:hover{
+  transition: color .1s ease-out;
   color: var(--text-color);
 }
 
@@ -165,7 +192,7 @@ p{
 }
 
 .mn-top-10{
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .mn-bottom-20{
@@ -274,11 +301,11 @@ p{
 .default-btn{
   display: inline-block;
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
   font-size: 16px;
   color: #fff;
   background: #903dd0;
-  padding: 12px 30px;
+  padding: 10px 25px;
   cursor: pointer;
 }
 

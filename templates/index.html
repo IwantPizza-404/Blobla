@@ -15,7 +15,7 @@
         <div class="main-container">
             <div class="flex-hl-row main-row">
                 <div class="flex-vl-row flex-cl-2">
-                    {% if post_list != null %}
+                    {% if post_list %}
                         {% for post in post_list %}
                             <a href="{% url 'post_detail' post.slug  %}" class="cboard post pn-25 flex-vl-row mn-bottom-20">
                                 <div class="post-details mn-bottom-10">

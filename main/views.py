@@ -4,6 +4,9 @@ from django.views import generic
 from .forms import CommentForm
 from .models import Post
 
+from django.http import HttpResponseRedirect
+from django import http
+
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "index.html"
@@ -18,13 +21,12 @@ class PostList(generic.ListView):
 def post_detail(request, slug):
     template_name = "post_detail.html"
     post = get_object_or_404(Post, slug=slug)
-    comments = post.comments.filter(active=True).order_by("-created_on")
+    comments = post.comments.filter(active=True).order_by("created_on")
     new_comment = None
     # Comment posted
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-
             # Create Comment object but don't save to database yet
             new_comment = comment_form.save(commit=False)
             # Assign the current post to the comment

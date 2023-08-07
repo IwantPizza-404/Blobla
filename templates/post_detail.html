@@ -42,7 +42,7 @@
                     <div class="comment-board cboard pn-25 mn-bottom-20 flex-vl-row">
                         {% if new_comment %}
                             <div class="alert alert-success" role="alert">
-                                Your comment is awaiting moderation
+                                Your comment in moderation!
                             </div>
                         {% else %}
                             <form action="." method="post" class="flex-vl-row">
@@ -52,11 +52,11 @@
                                     <input type="text" name="name" class="flex-cl-1" id="id_name" required maxlength="18" placeholder="Name" value="{{ comment.name }}">
                                     <input type="email" name="email" class="flex-cl-1" id="id_email" required maxlength="50" placeholder="Email" value="{{ comment.email }}">
                                 </div>
-                                <textarea name="body" class="mn-bottom-10" id="id_body" cols="30" rows="10" placeholder="Your comment..." value="{{ comment.body }}"></textarea>
+                                <textarea name="body" class="mn-bottom-10" id="id_body" cols="30" rows="10" required maxlength="500" placeholder="Your comment..." value="{{ comment.body }}"></textarea>
                                 <div class="send-btn-wrapp">
                                     <button class="default-btn" type="submit">Send</button>
                                 </div>
-                            </form>                            
+                            </form>
                         {% endif %}
                     </div>
                 </div>
