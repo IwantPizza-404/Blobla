@@ -1,11 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
+from django.contrib.auth import authenticate, login
 
 from .forms import CommentForm
 from .models import Post
-
-from django.http import HttpResponseRedirect
-from django import http
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by("-created_on")
