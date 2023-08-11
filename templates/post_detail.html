@@ -41,9 +41,7 @@
                     </div>
                     <div class="comment-board cboard pn-25 mn-bottom-20 flex-vl-row">
                         {% if new_comment %}
-                            <div class="alert alert-success" role="alert">
-                                Your comment in moderation!
-                            </div>
+                            <div class="alert" role="alert">Your comment is awaiting moderation!</div>
                         {% else %}
                             <form action="." method="post" class="flex-vl-row">
                                 {% csrf_token %}

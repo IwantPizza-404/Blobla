@@ -38,6 +38,7 @@ body.dark-theme{
   --text-color: #ffffff;
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-box: rgba(0, 0, 0, 0.15) 0px 0px 8px 0px;
+  --scroll-track-color: rgb(67, 67, 67);
 }
 
 body.light-theme{
@@ -47,6 +48,7 @@ body.light-theme{
   --text-color: #000000;
   --border-color: rgba(0, 0, 0, 0.1);
   --shadow-box: rgba(99, 99, 99, 0.1) 0px 0px 8px 0px;
+  --scroll-track-color: rgb(200, 200, 200);
 }
 
 
@@ -70,7 +72,7 @@ body.light-theme{
 }
 
 ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-color);
+  background: var(--scroll-track-color);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -504,6 +506,9 @@ p{
   .author-details h3{
     font-size: 24px;
   }
+  .post-details h3{
+    font-size: 24px;
+  }
   .author-details p{
     overflow: hidden;
 	  text-overflow: ellipsis;
@@ -521,12 +526,27 @@ p{
     padding: 20px;
   }
   .logo-m svg{
-    width: 90px;
-    height: 35px;
+    width: 95px;
+    height: 38px;
   }
+
 }
 
+@media screen and (max-width: 365px){
+  .author-details h3{
+    font-size: 22px;
+  }
+  .author-details p{
+    font-size: 15px;
+  }
+  .post-details h3{
+    font-size: 22px;
+  }
+  .post-details{
+    font-size: 15px;
+  }
 
+}
 
 
 
